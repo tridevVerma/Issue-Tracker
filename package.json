@@ -1,0 +1,23 @@
+{
+  "name": "backend-1",
+  "version": "1.0.0",
+  "description": "An Issue Tracker App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "keywords": [
+    "ISSUE-TRACKER",
+    "GITHUB",
+    "ISSUE"
+  ],
+  "author": "Tridev Verma",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-ejs-layouts": "^2.5.1",
+    "mongoose": "^7.1.0"
+  }
+}
