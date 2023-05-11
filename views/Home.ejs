@@ -1,3 +1,57 @@
-<div class="home-container">
-  <h1>Add New Project</h1>
+<link rel="stylesheet" href="/css/home_styles.css" />
+<main>
+  <button class="add-new-project">
+    <i class="fa-solid fa-plus"></i>
+  </button>
+
+  <div class="projects-container">
+    <ul>
+      <li>Project 1</li>
+      <li>Project 2</li>
+      <li>Project 3</li>
+      <li>Project 4</li>
+      <li>Project 5</li>
+      <li>Project 6</li>
+      <li>Project 7</li>
+      <li>Project 8</li>
+      <li>Project 9</li>
+    </ul>
+  </div>
+</main>
+
+<div class="modal-container hide">
+  <div class="customModal">
+    <div class="modal-heading">
+      <h1>Add New Project</h1>
+      <button class="close-modal"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <form action="/projects/add-project" method="post" id="add-project-form">
+      <input
+        type="text"
+        name="title"
+        id="title"
+        placeholder="Title of Project"
+        required
+      />
+      <input
+        type="text"
+        name="author"
+        id="author"
+        placeholder="Project author"
+        required
+      />
+      <textarea
+        name="desc"
+        id="desc"
+        cols="30"
+        rows="10"
+        placeholder="Description of project"
+        required
+      ></textarea>
+
+      <button type="submit">Add Project</button>
+    </form>
+  </div>
 </div>
+
+<script src="scripts/Home.js"></script>

@@ -1,0 +1,109 @@
+main {
+  width: 65%;
+  margin: 15vh auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  main > .add-new-project {
+    position: relative;
+    width: clamp(150px, 15vw, 300px);
+    height: clamp(150px, 15vw, 300px);
+    border: none;
+    background: #fff;
+    opacity: 0.2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.2s transform; }
+    main > .add-new-project > i {
+      font-size: 6vw; }
+    main > .add-new-project::before {
+      content: "";
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: -20px;
+      left: 20px;
+      background: #fff;
+      opacity: 0.6;
+      z-index: 5;
+      transition: 0.2s transform; }
+    main > .add-new-project:hover {
+      cursor: pointer;
+      opacity: 0.3; }
+    main > .add-new-project:hover::before {
+      cursor: pointer;
+      z-index: -5; }
+  main .add-new-project:active {
+    transform: translate(8px, -8px); }
+  main .add-new-project:active::before {
+    transform: translate(-8px, 8px); }
+  main .projects-container {
+    width: 100%;
+    margin: 15vh auto; }
+    main .projects-container > ul {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 2rem; }
+      main .projects-container > ul > li {
+        background-color: #fff;
+        opacity: 0.4; }
+
+.modal-container {
+  position: fixed;
+  bottom: 0%;
+  left: 0%;
+  width: 100%;
+  height: 75vh;
+  overflow: hidden;
+  transition: 0.4s height; }
+  .modal-container .customModal {
+    position: absolute;
+    bottom: 0%;
+    left: 0%;
+    background-color: #5887fc;
+    height: 100%;
+    width: 100%;
+    z-index: 8;
+    padding: 2rem 4vw; }
+    .modal-container .customModal > .modal-heading {
+      display: flex; }
+      .modal-container .customModal > .modal-heading > h1 {
+        flex: 1 0 auto;
+        text-align: center;
+        font-size: clamp(1.8rem, 2.5vw, 2.8rem);
+        font-weight: 700; }
+      .modal-container .customModal > .modal-heading > button {
+        border: none;
+        background-color: #cde;
+        width: clamp(3rem, 4vw, 70px);
+        height: clamp(3rem, 4vw, 70px);
+        border-radius: 50%;
+        opacity: 0.4;
+        transition: 0.4s all; }
+        .modal-container .customModal > .modal-heading > button > i {
+          font-size: clamp(1.5rem, 2.2vw, 2rem); }
+        .modal-container .customModal > .modal-heading > button:hover {
+          transform: rotate(180deg);
+          opacity: 1; }
+    .modal-container .customModal > form {
+      width: 65%;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      margin: 4vh auto; }
+      .modal-container .customModal > form > input,
+      .modal-container .customModal > form textarea,
+      .modal-container .customModal > form button {
+        width: 100%;
+        font-size: clamp(1.2rem, 2vw, 1.6rem);
+        border: none;
+        padding: 10px;
+        margin: 1.2rem;
+        outline: none; }
+      .modal-container .customModal > form > button {
+        color: #fff;
+        background: linear-gradient(to right bottom, #4facfe, 60%, #00d3df); }
+
+.hide {
+  height: 0vh; }
