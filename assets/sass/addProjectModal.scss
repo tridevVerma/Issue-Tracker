@@ -1,0 +1,74 @@
+.modal-container {
+  position: fixed;
+  bottom: 0%;
+  left: 0%;
+  width: 100%;
+  height: 70vh;
+  overflow: hidden;
+  transition: 0.4s height;
+  z-index: 8;
+
+  .customModal {
+    position: absolute;
+    bottom: 0%;
+    left: 0%;
+    background-color: #dcf0fa;
+    height: 100%;
+    width: 100%;
+    z-index: 8;
+    padding: 2rem 4vw;
+
+    > .modal-heading {
+      display: flex;
+      > h1 {
+        flex: 1 0 auto;
+        text-align: center;
+        font-size: clamp(1.8rem, 2.5vw, 2.8rem);
+        font-weight: 700;
+      }
+
+      > button {
+        border: none;
+        background-color: #cde;
+        width: clamp(3rem, 4vw, 70px);
+        height: clamp(3rem, 4vw, 70px);
+        border-radius: 50%;
+        opacity: 0.4;
+        transition: 0.4s all;
+        > i {
+          font-size: clamp(1.5rem, 2.2vw, 2rem);
+        }
+
+        &:hover {
+          transform: rotate(180deg);
+          opacity: 1;
+        }
+      }
+    }
+    > form {
+      width: 65%;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      margin: 4vh auto;
+      > input,
+      textarea,
+      button {
+        width: 100%;
+        font-size: clamp(1.2rem, 2vw, 1.6rem);
+        border: none;
+        padding: 10px;
+        margin: 1.2rem;
+        outline: none;
+      }
+
+      > button {
+        color: #fff;
+        background: #50b8e7;
+      }
+    }
+  }
+}
+.hide {
+  height: 0vh;
+}

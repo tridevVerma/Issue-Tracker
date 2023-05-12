@@ -1,0 +1,101 @@
+.modal-container {
+  position: fixed;
+  bottom: 0%;
+  left: 0%;
+  width: 100%;
+  height: 60vh;
+  overflow: hidden;
+  transition: 0.4s height;
+  z-index: 8; }
+  .modal-container .customModal {
+    position: absolute;
+    bottom: 0%;
+    left: 0%;
+    background-color: #dcf0fa;
+    height: 100%;
+    width: 100%;
+    z-index: 8;
+    padding: 2rem 4vw; }
+    .modal-container .customModal > .modal-heading {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      justify-content: center;
+      align-items: center; }
+      .modal-container .customModal > .modal-heading > h1 {
+        font-size: clamp(1.8rem, 2.5vw, 2.8rem);
+        font-weight: 700; }
+      .modal-container .customModal > .modal-heading > button {
+        border: none;
+        background-color: #cde;
+        width: clamp(3rem, 4vw, 70px);
+        height: clamp(3rem, 4vw, 70px);
+        border-radius: 50%;
+        opacity: 0.4;
+        transition: 0.4s all; }
+        .modal-container .customModal > .modal-heading > button > i {
+          font-size: clamp(1.5rem, 2.2vw, 2rem); }
+        .modal-container .customModal > .modal-heading > button:hover {
+          transform: rotate(180deg);
+          opacity: 1; }
+    .modal-container .customModal > form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 2rem;
+      width: 100%;
+      margin: 4vh auto; }
+      .modal-container .customModal > form > .info {
+        display: grid;
+        grid-gap: 1.5rem;
+        grid-template-columns: 1fr 1fr; }
+        .modal-container .customModal > form > .info > input,
+        .modal-container .customModal > form > .info textarea {
+          font-size: clamp(1.2rem, 2vw, 1.6rem);
+          padding: 10px;
+          outline: none;
+          border: 4px solid #50b8e7; }
+        .modal-container .customModal > form > .info > textarea {
+          grid-column: span 2; }
+      .modal-container .customModal > form .issue-labels {
+        width: 100%;
+        display: grid;
+        grid-template-rows: auto 1fr;
+        grid-gap: 1.5rem; }
+        .modal-container .customModal > form .issue-labels > input {
+          width: 100%;
+          font-size: clamp(1.2rem, 2vw, 1.6rem);
+          padding: 10px;
+          outline: none;
+          border: 4px solid #50b8e7; }
+        .modal-container .customModal > form .issue-labels > fieldset {
+          height: 100%;
+          border: 4px solid #50b8e7; }
+          .modal-container .customModal > form .issue-labels > fieldset > legend {
+            font-size: 1.5rem; }
+          .modal-container .customModal > form .issue-labels > fieldset > .labels-container {
+            padding-left: 2rem;
+            padding-right: 2rem;
+            height: 100%;
+            display: grid;
+            grid-template-columns: 50px 1fr;
+            align-items: center; }
+            .modal-container .customModal > form .issue-labels > fieldset > .labels-container > label {
+              font-size: 1.5rem; }
+            .modal-container .customModal > form .issue-labels > fieldset > .labels-container > input {
+              height: 20px;
+              width: 20px; }
+      .modal-container .customModal > form > button {
+        grid-column: span 2;
+        font-size: clamp(1.2rem, 2vw, 1.6rem);
+        border: none;
+        padding: 10px;
+        outline: none;
+        color: #fff;
+        background: #50b8e7;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px; }
+        .modal-container .customModal > form > button:hover {
+          background-color: rgba(29, 159, 219, 0.882); }
+        .modal-container .customModal > form > button:active {
+          box-shadow: none; }
+
+.hide {
+  height: 0vh; }

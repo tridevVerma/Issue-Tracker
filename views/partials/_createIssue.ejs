@@ -1,0 +1,87 @@
+<link rel="stylesheet" href="/css/createIssueModal.css" />
+<div class="modal-container hide">
+  <div class="customModal">
+    <div class="modal-heading">
+      <h1>Create Issue</h1>
+      <button class="close-modal"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <form action="/issues/create" method="post" id="create-issue-form">
+      <div class="info">
+        <input
+          type="text"
+          name="title"
+          id="title"
+          placeholder="Title of Issue"
+          required
+        />
+        <input
+          type="text"
+          name="author"
+          id="author"
+          placeholder="Issue author"
+          required
+        />
+        <textarea
+          name="desc"
+          id="desc"
+          cols="30"
+          rows="10"
+          placeholder="Description of issue"
+          required
+        ></textarea>
+      </div>
+      <div class="issue-labels">
+        <input
+          list="previous-issues"
+          name="previousIssues"
+          placeholder="Previous Issues"
+          autocomplete="off"
+        />
+
+        <datalist id="previous-issues">
+          <option value="Bugs"></option>
+          <option value="Documentation"></option>
+        </datalist>
+
+        <fieldset>
+          <legend>Select labels for Issue?</legend>
+
+          <div class="labels-container">
+            <input type="checkbox" name="issues" value="bug" id="bug" />
+            <label for="bug">Bug</label>
+            <input
+              type="checkbox"
+              name="issues"
+              value="ui improvement"
+              id="ui improvement"
+            />
+            <label for="ui improvement">UI Improvement</label>
+            <input
+              type="checkbox"
+              name="issues"
+              value="documentation"
+              id="documentation"
+            />
+            <label for="documentation">Documentation</label>
+            <input
+              type="checkbox"
+              name="issues"
+              value="enhancement"
+              id="enhancement"
+            />
+            <label for="enhancement"> Enhancement </label>
+            <input
+              type="checkbox"
+              name="issues"
+              value="duplicate"
+              id="duplicate"
+            />
+            <label for="duplicate">Duplicate</label>
+          </div>
+        </fieldset>
+      </div>
+
+      <button type="submit">Raise Issue</button>
+    </form>
+  </div>
+</div>

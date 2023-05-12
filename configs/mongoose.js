@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 
 mongoose.set("strictQuery", true);
 
-main().catch((err) => console.log(err));
+main().catch((err) => console.log(err.message));
 
 async function main() {
   await mongoose.connect(

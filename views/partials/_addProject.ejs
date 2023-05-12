@@ -1,0 +1,35 @@
+<link rel="stylesheet" href="/css/addProjectModal.css" />
+<div class="modal-container hide">
+  <div class="customModal">
+    <div class="modal-heading">
+      <h1>Add New Project</h1>
+      <button class="close-modal"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <form action="/projects/add-project" method="post" id="add-project-form">
+      <input
+        type="text"
+        name="title"
+        id="title"
+        placeholder="Title of Project"
+        required
+      />
+      <input
+        type="text"
+        name="author"
+        id="author"
+        placeholder="Project author"
+        required
+      />
+      <textarea
+        name="desc"
+        id="desc"
+        cols="30"
+        rows="10"
+        placeholder="Description of project"
+        required
+      ></textarea>
+
+      <button type="submit">Add Project</button>
+    </form>
+  </div>
+</div>

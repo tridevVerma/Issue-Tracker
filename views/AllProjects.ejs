@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="/css/allProjects_styles.css" />
+<div class="overlay"></div>
+<main>
+  <h1>All Projects</h1>
+  <ul>
+    <%locals.allProjects.forEach((project) => {%>
+
+    <li>
+      <div class="project-heading">
+        <h2><%=project.title%></h2>
+        <span class="status-indicator"></span>
+        <p>5 Issues</p>
+      </div>
+      <p>-By <%=project.author%></p>
+      <p><%=project.desc%></p>
+      <div class="action-btns">
+        <a href="/projects/<%=project._id%>">Show Details</a>
+        <button class="raise-issue" id="<%=project._id%>">Raise Issue</button>
+      </div>
+    </li>
+
+    <%})%>
+  </ul>
+</main>
+
+<%- include('./partials/_createIssue'); %>
+
+<script src="/scripts/AllProjects.js"></script>

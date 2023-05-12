@@ -1,9 +1,24 @@
 main {
-  width: 65%;
+  width: 70%;
   margin: 15vh auto;
   display: flex;
   flex-direction: column;
   align-items: center; }
+  @media screen and (min-width: 0px) {
+    main {
+      width: 96%; } }
+  @media screen and (min-width: 576px) {
+    main {
+      width: 90%; } }
+  @media screen and (min-width: 768px) {
+    main {
+      width: 85%; } }
+  @media screen and (min-width: 992px) {
+    main {
+      width: 80%; } }
+  @media screen and (min-width: 1200px) {
+    main {
+      width: 70%; } }
   main > .add-new-project {
     position: relative;
     width: clamp(150px, 15vw, 300px);
@@ -40,70 +55,62 @@ main {
     transform: translate(-8px, 8px); }
   main .projects-container {
     width: 100%;
-    margin: 15vh auto; }
+    margin: 10vh auto; }
+    main .projects-container > h1 {
+      font-size: clamp(2rem, 2.5vw, 3rem);
+      text-align: center;
+      margin-bottom: 4vh; }
     main .projects-container > ul {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-gap: 2rem; }
-      main .projects-container > ul > li {
-        background-color: #fff;
-        opacity: 0.4; }
+      grid-template-columns: 1fr;
+      grid-gap: 2rem;
+      max-width: 100%;
+      min-width: 0%; }
+      @media screen and (min-width: 768px) {
+        main .projects-container > ul {
+          grid-template-columns: repeat(2, 1fr); } }
+      @media screen and (min-width: 992px) {
+        main .projects-container > ul {
+          grid-template-columns: repeat(3, 1fr); } }
+      main .projects-container > ul > a {
+        color: #000; }
+        main .projects-container > ul > a > li {
+          max-width: 100%;
+          background-color: #fff;
+          opacity: 0.8;
+          height: 250px;
+          padding: 1rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+          overflow: hidden; }
+          main .projects-container > ul > a > li > .project-heading {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem; }
+            main .projects-container > ul > a > li > .project-heading > h2 {
+              flex: 1 0 60%;
+              text-transform: capitalize;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis; }
+            main .projects-container > ul > a > li > .project-heading > .status-indicator {
+              width: 10px;
+              height: 10px;
+              border-radius: 50%;
+              background-color: green;
+              margin-right: 0.8rem; }
+          main .projects-container > ul > a > li > p {
+            margin-bottom: 1.5rem;
+            overflow: hidden; }
 
-.modal-container {
+.overlay {
+  display: none;
   position: fixed;
-  bottom: 0%;
+  top: 0%;
   left: 0%;
   width: 100%;
-  height: 75vh;
-  overflow: hidden;
-  transition: 0.4s height; }
-  .modal-container .customModal {
-    position: absolute;
-    bottom: 0%;
-    left: 0%;
-    background-color: #5887fc;
-    height: 100%;
-    width: 100%;
-    z-index: 8;
-    padding: 2rem 4vw; }
-    .modal-container .customModal > .modal-heading {
-      display: flex; }
-      .modal-container .customModal > .modal-heading > h1 {
-        flex: 1 0 auto;
-        text-align: center;
-        font-size: clamp(1.8rem, 2.5vw, 2.8rem);
-        font-weight: 700; }
-      .modal-container .customModal > .modal-heading > button {
-        border: none;
-        background-color: #cde;
-        width: clamp(3rem, 4vw, 70px);
-        height: clamp(3rem, 4vw, 70px);
-        border-radius: 50%;
-        opacity: 0.4;
-        transition: 0.4s all; }
-        .modal-container .customModal > .modal-heading > button > i {
-          font-size: clamp(1.5rem, 2.2vw, 2rem); }
-        .modal-container .customModal > .modal-heading > button:hover {
-          transform: rotate(180deg);
-          opacity: 1; }
-    .modal-container .customModal > form {
-      width: 65%;
-      display: flex;
-      flex-direction: column;
-      align-items: stretch;
-      margin: 4vh auto; }
-      .modal-container .customModal > form > input,
-      .modal-container .customModal > form textarea,
-      .modal-container .customModal > form button {
-        width: 100%;
-        font-size: clamp(1.2rem, 2vw, 1.6rem);
-        border: none;
-        padding: 10px;
-        margin: 1.2rem;
-        outline: none; }
-      .modal-container .customModal > form > button {
-        color: #fff;
-        background: linear-gradient(to right bottom, #4facfe, 60%, #00d3df); }
-
-.hide {
-  height: 0vh; }
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 5; }

@@ -4,11 +4,11 @@
   box-sizing: border-box; }
 
 body {
+  min-height: 100vh;
   font-size: 16px;
   background: linear-gradient(to right bottom, #4facfe, 60%, #00d3df);
   background-size: cover;
   background-repeat: no-repeat;
-  min-height: 100vh;
   font-family: "Poppins", sans-serif; }
 
 i + span {

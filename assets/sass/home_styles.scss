@@ -1,9 +1,36 @@
+$xsmall: 0px;
+$small: 576px;
+$medium: 768px;
+$large: 992px;
+$xlarge: 1200px;
+$xxlarge: 1400px;
+
 main {
-  width: 65%;
+  width: 70%;
   margin: 15vh auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media screen and (min-width: $xsmall) {
+    width: 96%;
+  }
+
+  @media screen and (min-width: $small) {
+    width: 90%;
+  }
+
+  @media screen and (min-width: $medium) {
+    width: 85%;
+  }
+
+  @media screen and (min-width: $large) {
+    width: 80%;
+  }
+
+  @media screen and (min-width: $xlarge) {
+    width: 70%;
+  }
 
   > .add-new-project {
     position: relative;
@@ -54,90 +81,77 @@ main {
 
   .projects-container {
     width: 100%;
-    margin: 15vh auto;
+    margin: 10vh auto;
+    > h1 {
+      font-size: clamp(2rem, 2.5vw, 3rem);
+      text-align: center;
+      margin-bottom: 4vh;
+    }
     > ul {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 1fr;
       grid-gap: 2rem;
+      max-width: 100%;
+      min-width: 0%;
 
-      > li {
-        background-color: #fff;
-        opacity: 0.4;
+      @media screen and (min-width: $medium) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @media screen and (min-width: $large) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      > a {
+        color: #000;
+        > li {
+          max-width: 100%;
+          background-color: #fff;
+          opacity: 0.8;
+          height: 250px;
+          padding: 1rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+          overflow: hidden;
+          > .project-heading {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            > h2 {
+              flex: 1 0 60%;
+              text-transform: capitalize;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+            > .status-indicator {
+              width: 10px;
+              height: 10px;
+              border-radius: 50%;
+              background-color: green;
+              margin-right: 0.8rem;
+            }
+          }
+
+          > p {
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+          }
+        }
       }
     }
   }
 }
 
-.modal-container {
+.overlay {
+  display: none;
   position: fixed;
-  bottom: 0%;
+  top: 0%;
   left: 0%;
   width: 100%;
-  height: 75vh;
-  overflow: hidden;
-  transition: 0.4s height;
-
-  .customModal {
-    position: absolute;
-    bottom: 0%;
-    left: 0%;
-    background-color: #5887fc;
-    height: 100%;
-    width: 100%;
-    z-index: 8;
-    padding: 2rem 4vw;
-
-    > .modal-heading {
-      display: flex;
-      > h1 {
-        flex: 1 0 auto;
-        text-align: center;
-        font-size: clamp(1.8rem, 2.5vw, 2.8rem);
-        font-weight: 700;
-      }
-
-      > button {
-        border: none;
-        background-color: #cde;
-        width: clamp(3rem, 4vw, 70px);
-        height: clamp(3rem, 4vw, 70px);
-        border-radius: 50%;
-        opacity: 0.4;
-        transition: 0.4s all;
-        > i {
-          font-size: clamp(1.5rem, 2.2vw, 2rem);
-        }
-
-        &:hover {
-          transform: rotate(180deg);
-          opacity: 1;
-        }
-      }
-    }
-    > form {
-      width: 65%;
-      display: flex;
-      flex-direction: column;
-      align-items: stretch;
-      margin: 4vh auto;
-      > input,
-      textarea,
-      button {
-        width: 100%;
-        font-size: clamp(1.2rem, 2vw, 1.6rem);
-        border: none;
-        padding: 10px;
-        margin: 1.2rem;
-        outline: none;
-      }
-
-      > button {
-        color: #fff;
-        background: linear-gradient(to right bottom, #4facfe, 60%, #00d3df);
-      }
-    }
-  }
-}
-.hide {
-  height: 0vh;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 5;
 }
