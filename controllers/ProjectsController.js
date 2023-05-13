@@ -1,4 +1,5 @@
 const Project = require("../models/Project");
+const Issue = require("../models/Issue");
 
 module.exports.addProject = async (req, res) => {
   try {
@@ -34,14 +35,58 @@ module.exports.details = async (req, res) => {
   return res.render("ProjectDetails", { title: "Details Page", project });
 };
 
-module.exports.filter = (req, res) => {
+module.exports.filter = async (req, res) => {
+  let results = [];
+  console.log(req.body);
+
+  const { type } = req.body;
+
   try {
-    console.log(req.body);
-    return res.status(200).json({
-      success: true,
-      filteredIssues: [],
-    });
+    switch (type) {
+      case "filter-by-labels":
+        const filtersList = req.body.labelsList.toUpperCase().split(",");
+        let filteredIssues = await Promise.all(
+          filtersList.map(async (issue) => {
+            return await Issue.find({ labels: issue }).sort({
+              createdAt: -1,
+            });
+          })
+        );
+
+        filteredIssues = filteredIssues.reduce(
+          (ans, data) => [...ans, ...data],
+          []
+        );
+        results = filteredIssues;
+        break;
+
+      case "filter-by-author":
+        const filteredAuthor = await Issue.find({
+          author: req.body.authorName,
+        }).sort({ createdAt: -1 });
+        results = filteredAuthor;
+        break;
+
+      case "search":
+        const { searchBy } = req.body;
+        const filteredSearch = await Issue.find({
+          $text: { $search: searchBy },
+        }).sort({ createdAt: -1 });
+        results = filteredSearch;
+        break;
+      default:
+        break;
+    }
   } catch (err) {
-    console.log("Error:", err.message);
+    console.log(err);
+    return res.status(500).json({
+      success: false,
+      message: err.message,
+    });
   }
+
+  return res.status(200).json({
+    success: true,
+    filteredData: results,
+  });
 };

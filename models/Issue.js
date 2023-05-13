@@ -36,6 +36,6 @@ const issueSchema = mongoose.Schema(
   }
 );
 
+issueSchema.index({ title: "text", desc: "text" });
 const Issue = mongoose.model("Issue", issueSchema);
-
 module.exports = Issue;

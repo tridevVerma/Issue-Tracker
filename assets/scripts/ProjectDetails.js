@@ -1,29 +1,50 @@
 {
+  const htmlGenerator = (issue) => {
+    return `<li>
+    <h2>${issue.title}</h2>
+    <p>-By ${issue.author}</p>
+    <p>${issue.desc}</p>
+    <div class="label-tags">
+      <ul>
+        ${issue.labels.map((label) => {
+          return `<li>${label}</li>`;
+        })}
+      </ul>
+    </div>
+  </li>`;
+  };
+
   (function () {
-    console.log("connected");
+    const labelForm = $("#filter-by-issue-labels");
+    const authorForm = $("#filter-by-author");
+    const searchForm = $("#search-title-desc");
 
-    $("#filter-selector").click(function (e) {
-      const filterText = $("#filter-text");
-      const label = $("#filter-selector :selected").parent().attr("label");
-      if (label === "Issue Labels") {
-        $(filterText).val(e.target.value);
-      }
-    });
+    [labelForm, authorForm, searchForm].forEach((filterForm) => {
+      $(filterForm).submit(function (e) {
+        e.preventDefault();
 
-    const filterForm = $("#filter-form");
-    $(filterForm).submit(function (e) {
-      e.preventDefault();
+        $.ajax({
+          type: "POST",
+          url: $(this).attr("action"),
+          data: $(this).serialize(),
+          success: function (data) {
+            console.log();
+            const container = $(".issues-container > ul");
+            $(container).empty();
 
-      $.ajax({
-        type: "POST",
-        url: $(this).attr("action"),
-        data: $(this).serialize(),
-        success: function (data) {
-          console.log(data);
-        },
-        error: function (err) {
-          console.log(err);
-        },
+            data.filteredData.forEach((issue) => {
+              const htmlString = htmlGenerator(issue);
+              $(container).append(htmlString);
+            });
+
+            $(filterForm).each(function () {
+              this.reset();
+            });
+          },
+          error: function (err) {
+            console.log(err.Message);
+          },
+        });
       });
     });
   })();
