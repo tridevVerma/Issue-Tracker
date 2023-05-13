@@ -1,3 +1,5 @@
+@import "breakpoints";
+
 .modal-container {
   position: fixed;
   bottom: 0%;
@@ -7,6 +9,10 @@
   overflow: hidden;
   transition: 0.4s height;
   z-index: 8;
+
+  @media screen and (max-width: 1275px) {
+    height: 75vh;
+  }
 
   .customModal {
     position: absolute;
@@ -54,32 +60,55 @@
       width: 100%;
       margin: 4vh auto;
 
+      @media screen and (max-width: 1275px) {
+        display: block;
+        margin: 2vh auto;
+      }
+
       > .info {
+        min-width: 0px;
+        max-width: 100%;
         display: grid;
         grid-gap: 1.5rem;
         grid-template-columns: 1fr 1fr;
 
+        @media screen and (max-width: 1275px) {
+          grid-gap: 1rem;
+        }
+
         > input,
         textarea {
-          font-size: clamp(1.2rem, 2vw, 1.6rem);
-          padding: 10px;
+          font-size: clamp(1.2rem, 1.5vw, 1.6rem);
+          padding: clamp(5px, 1vw, 10px);
           outline: none;
           border: 4px solid #50b8e7;
+          width: 100%;
         }
         > textarea {
           grid-column: span 2;
         }
+
+        @media screen and (max-width: 1275px) {
+          margin-bottom: 1.2rem;
+        }
       }
 
       .issue-labels {
+        min-width: 0px;
+        max-width: 100%;
         width: 100%;
         display: grid;
         grid-template-rows: auto 1fr;
         grid-gap: 1.5rem;
+
+        @media screen and (max-width: 1275px) {
+          grid-gap: 1rem;
+        }
+
         > input {
           width: 100%;
-          font-size: clamp(1.2rem, 2vw, 1.6rem);
-          padding: 10px;
+          font-size: clamp(1.2rem, 1.5vw, 1.6rem);
+          padding: clamp(5px, 1vw, 10px);
           outline: none;
           border: 4px solid #50b8e7;
         }
@@ -98,8 +127,13 @@
             grid-template-columns: 50px 1fr;
             align-items: center;
 
+            @media screen and (max-width: 1275px) {
+              grid-gap: 0.6rem;
+              padding-top: 1rem;
+              padding-bottom: 1rem;
+            }
             > label {
-              font-size: 1.5rem;
+              font-size: clamp(1.2rem, 1.5vw, 1.6rem);
             }
             > input {
               height: 20px;
@@ -125,6 +159,11 @@
         }
         &:active {
           box-shadow: none;
+        }
+
+        @media screen and (max-width: 1275px) {
+          width: 100%;
+          margin-top: 1.5rem;
         }
       }
     }

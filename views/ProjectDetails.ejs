@@ -23,6 +23,7 @@
           <span class="expand-icon">&plus;</span>
         </div>
         <input type="hidden" name="type" value="filter-by-labels" />
+        <input type="hidden" name="projectID" value="<%=project._id%>" />
         <div class="container">
           <option value="Bug">Bug</option>
           <option value="UI Improvement">UI Improvement</option>
@@ -36,25 +37,25 @@
 
     <form method="post" action="/projects/filter" id="filter-by-author">
       <input type="hidden" name="type" value="filter-by-author" />
-      <select name="authorName">
-        <option value="" selected disabled>Filter By Author</option>
-        <option value="Tridev">Tridev</option>
-        <option value="Saurav">Saurav</option>
-        <option value="Nihal">Nihal</option>
-        <option value="Mausam">Mausam</option>
-      </select>
+      <input type="hidden" name="projectID" value="<%=project._id%>" />
+      <select name="authorName" id="author-selector"></select>
       <button type="submit" class="filter-submit-btn">Filter</button>
     </form>
 
     <form method="post" action="/projects/filter" id="search-title-desc">
       <input type="hidden" name="type" value="search" />
+      <input type="hidden" name="projectID" value="<%=project._id%>" />
       <input
         type="text"
         name="searchBy"
-        id=""
+        id="search-input"
         placeholder="Search for title or description"
       />
-      <button type="submit" class="filter-submit-btn">Search</button>
+
+      <button type="submit" class="filter-submit-btn">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <span>Search</span>
+      </button>
     </form>
   </div>
 
@@ -63,10 +64,11 @@
     <h1><%=project.title%></h1>
     <blockquote>-By <%=project.author%></blockquote>
     <p><%=project.desc%></p>
+    <button class="raise-issue" id="<%=project._id%>">Raise Issue</button>
   </div>
 
   <div class="issues-container">
-    <h1>Issues</h1>
+    <h1 id="show-filtered-heading">Issues</h1>
     <ul>
       <% project.issues.forEach(issue => { %>
       <li>
@@ -86,5 +88,8 @@
   </div>
 </main>
 
+<%- include('./partials/_createIssue'); %>
+
 <script src="/scripts/MultiSelect.js"></script>
+<script src="/scripts/AllProjects.js"></script>
 <script src="/scripts/ProjectDetails.js"></script>

@@ -14,7 +14,32 @@
   </li>`;
   };
 
+  const getAuthors = () => {
+    $.ajax({
+      type: "GET",
+      url: "/issues/authors",
+      success: function (data) {
+        const authorSelector = $("#author-selector");
+        $(authorSelector).empty();
+        $(authorSelector).append(
+          '<option value="" selected disabled>Filter By Author</option>'
+        );
+        let htmlString = "";
+
+        data.data.authors.forEach((author) => {
+          htmlString += `<option value="${author}">${author}</option>`;
+        });
+        $(authorSelector).append(htmlString);
+      },
+      error: function (err) {
+        console.log(err);
+      },
+    });
+  };
+
   (function () {
+    getAuthors();
+
     const labelForm = $("#filter-by-issue-labels");
     const authorForm = $("#filter-by-author");
     const searchForm = $("#search-title-desc");
@@ -28,7 +53,8 @@
           url: $(this).attr("action"),
           data: $(this).serialize(),
           success: function (data) {
-            console.log();
+            console.log(data);
+            $("#show-filtered-heading").text("Issues : Filters Applied");
             const container = $(".issues-container > ul");
             $(container).empty();
 

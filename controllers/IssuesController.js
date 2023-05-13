@@ -35,3 +35,24 @@ module.exports.create = async (req, res) => {
     },
   });
 };
+
+module.exports.getIssueAuthorNames = async (req, res) => {
+  try {
+    const authors = await Issue.find({}).select("author -_id");
+
+    const result = authors.reduce((ans, obj) => [...ans, obj.author], []);
+
+    return res.status(200).json({
+      success: true,
+      data: {
+        authors: [...new Set(result)],
+      },
+    });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({
+      success: false,
+      message: err.message,
+    });
+  }
+};

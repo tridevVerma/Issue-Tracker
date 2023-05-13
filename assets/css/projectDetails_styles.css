@@ -1,23 +1,25 @@
 main {
   width: 65%;
   margin: 10vh auto; }
+  @media screen and (min-width: 0px) {
+    main {
+      width: 96%; } }
+  @media screen and (min-width: 576px) {
+    main {
+      width: 90%; } }
+  @media screen and (min-width: 768px) {
+    main {
+      width: 85%; } }
+  @media screen and (min-width: 992px) {
+    main {
+      width: 80%; } }
+  @media screen and (min-width: 1200px) {
+    main {
+      width: 70%; } }
   main > h1 {
     margin-bottom: 1rem;
     letter-spacing: 2px;
     color: #fff; }
-  main .project-container {
-    min-height: auto;
-    background-color: #eeefff;
-    padding: 1.5rem; }
-    main .project-container > h1 {
-      text-transform: capitalize;
-      margin-bottom: 1.2rem; }
-    main .project-container > blockquote {
-      font-size: 1.2rem;
-      margin-bottom: 1.2rem; }
-    main .project-container > p {
-      line-height: 2rem;
-      font-size: 1.1rem; }
   main .filter-container {
     margin: 2rem auto;
     margin-bottom: 5vh; }
@@ -38,7 +40,50 @@ main {
         font-size: 1.2rem;
         padding: 10px 20px; }
       main .filter-container > form > button {
-        font-size: 1.2rem; }
+        font-size: 1.2rem;
+        background-color: #0a8f0b;
+        color: #fff; }
+    main .filter-container > #search-title-desc > button {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center; }
+      main .filter-container > #search-title-desc > button > i {
+        color: #000;
+        transform: translateX(-150%);
+        margin-right: -8px;
+        font-size: 0.9rem; }
+  main .project-container {
+    background-color: #fff;
+    opacity: 0.9;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column; }
+    main .project-container > h1 {
+      text-transform: capitalize;
+      margin-bottom: 1.2rem; }
+    main .project-container > blockquote {
+      font-size: 1.2rem;
+      margin-bottom: 1.2rem; }
+    main .project-container > p {
+      line-height: 2rem;
+      font-size: 1.1rem; }
+    main .project-container > button {
+      align-self: flex-end;
+      margin-top: 1rem;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      padding-left: 12px;
+      padding-right: 12px;
+      background-color: #ff6e55;
+      color: #fff;
+      font-size: clamp(1rem, 1.4vw, 1.2rem);
+      letter-spacing: 1px;
+      border: none;
+      box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px; }
+      main .project-container > button:active {
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px; }
+      main .project-container > button:hover {
+        background-color: #fa5234; }
   main .issues-container {
     margin-top: 5vh;
     margin-bottom: 2rem; }
@@ -48,7 +93,8 @@ main {
       color: #fff; }
     main .issues-container > ul > li {
       padding: 1rem;
-      background-color: #efe;
+      background-color: #fff;
+      opacity: 0.8;
       margin-bottom: 2rem; }
       main .issues-container > ul > li > h2 {
         font-weight: 600; }
@@ -68,3 +114,6 @@ main {
             border-radius: 30px;
             text-transform: lowercase;
             font-weight: 500; }
+            @media screen and (max-width: 768px) {
+              main .issues-container > ul > li > .label-tags > ul > li {
+                padding: 0.5rem; } }

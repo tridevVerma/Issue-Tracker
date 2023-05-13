@@ -35,11 +35,30 @@ module.exports.details = async (req, res) => {
   return res.render("ProjectDetails", { title: "Details Page", project });
 };
 
+module.exports.previousIssuesList = async (req, res) => {
+  console.log(req.params);
+  const project = await Project.findOne({ _id: req.params.projectID }).populate(
+    "issues"
+  );
+
+  let labels = project.issues.reduce(
+    (ans, issue) => [...ans, ...issue.labels],
+    []
+  );
+
+  labels = [...new Set(labels)];
+
+  return res.status(200).json({
+    success: true,
+    labels,
+  });
+};
+
 module.exports.filter = async (req, res) => {
   let results = [];
   console.log(req.body);
 
-  const { type } = req.body;
+  const { type, projectID } = req.body;
 
   try {
     switch (type) {
@@ -47,22 +66,31 @@ module.exports.filter = async (req, res) => {
         const filtersList = req.body.labelsList.toUpperCase().split(",");
         let filteredIssues = await Promise.all(
           filtersList.map(async (issue) => {
-            return await Issue.find({ labels: issue }).sort({
+            return await Issue.find({
+              $and: [{ project: projectID }, { labels: issue }],
+            }).sort({
               createdAt: -1,
             });
           })
         );
 
-        filteredIssues = filteredIssues.reduce(
-          (ans, data) => [...ans, ...data],
-          []
-        );
-        results = filteredIssues;
+        filteredIssues = filteredIssues.reduce((ans, data) => {
+          return [...ans, ...data];
+        }, []);
+
+        results = [
+          ...new Map(filteredIssues.map((item) => [item.id, item])).values(),
+        ];
         break;
 
       case "filter-by-author":
         const filteredAuthor = await Issue.find({
-          author: req.body.authorName,
+          $and: [
+            { project: projectID },
+            {
+              author: req.body.authorName,
+            },
+          ],
         }).sort({ createdAt: -1 });
         results = filteredAuthor;
         break;
@@ -70,7 +98,12 @@ module.exports.filter = async (req, res) => {
       case "search":
         const { searchBy } = req.body;
         const filteredSearch = await Issue.find({
-          $text: { $search: searchBy },
+          $and: [
+            { project: projectID },
+            {
+              $text: { $search: searchBy },
+            },
+          ],
         }).sort({ createdAt: -1 });
         results = filteredSearch;
         break;

@@ -1,4 +1,23 @@
 {
+  const getIssueLabels = (projectID) => {
+    $.ajax({
+      type: "GET",
+      url: `/projects/previous-issues/${projectID}`,
+      success: function (data) {
+        $("#previous-issues").empty();
+        let htmlString = "";
+        data.labels.forEach((label) => {
+          htmlString += `<option value="${label}"></option>`;
+        });
+
+        $("#previous-issues").append(htmlString);
+      },
+      error: function (err) {
+        console.log(err);
+      },
+    });
+  };
+
   (function () {
     const issueBtn = $(".raise-issue");
     const modalContainer = $(".modal-container");
@@ -7,6 +26,7 @@
 
     issueBtn.click(function (e) {
       modalContainer.removeClass("hide");
+      getIssueLabels(this.id);
       overlay.show();
     });
 
