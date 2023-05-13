@@ -33,7 +33,7 @@
           const htmlString = `<a href="/projects/${addedProject._id}"><li><div class="project-heading">
           <h2>${addedProject.title}</h2>
           <span class="status-indicator"></span>
-          <p>5 Issues</p>
+          <p>0 Issues</p>
         </div>
         <p>-By ${addedProject.author}</p>
         <p>${addedProject.desc}</p></li></a>`;

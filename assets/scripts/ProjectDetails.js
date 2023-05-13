@@ -39,8 +39,33 @@
     });
   };
 
+  // Get all issue's labels on a project to populate filter-by-label drop-down
+  const getAllIssueLabels = (projectID) => {
+    $.ajax({
+      type: "GET",
+      url: `/projects/previous-issues/${projectID}`,
+      success: function (data) {
+        $("#label-filter-container").empty();
+        let htmlString = "";
+        data.labels.forEach((label) => {
+          htmlString += `<option value="${label}">${label}</option>`;
+        });
+
+        $("#label-filter-container").append(htmlString);
+      },
+      error: function (err) {
+        console.log(err);
+      },
+    });
+  };
+
   (function () {
     getAuthors();
+
+    // Get authorID from url and populate all issue labels associated to that label
+    const urlString = window.location.href;
+    const authorID = urlString.split("/")[4];
+    getAllIssueLabels(authorID);
 
     const labelForm = $("#filter-by-issue-labels");
     const authorForm = $("#filter-by-author");

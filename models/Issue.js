@@ -21,13 +21,6 @@ const issueSchema = mongoose.Schema(
     labels: [
       {
         type: String,
-        enum: [
-          "BUG",
-          "UI IMPROVEMENT",
-          "DOCUMENTATION",
-          "ENHANCEMENT",
-          "DUPLICATE",
-        ],
       },
     ],
   },

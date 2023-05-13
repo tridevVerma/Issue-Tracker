@@ -24,7 +24,7 @@
         </div>
         <input type="hidden" name="type" value="filter-by-labels" />
         <input type="hidden" name="projectID" value="<%=project._id%>" />
-        <div class="container">
+        <div class="container" id="label-filter-container">
           <option value="Bug">Bug</option>
           <option value="UI Improvement">UI Improvement</option>
           <option value="Documentation">Documentation</option>
@@ -50,6 +50,7 @@
         name="searchBy"
         id="search-input"
         placeholder="Search for title or description"
+        autocomplete="off"
       />
 
       <button type="submit" class="filter-submit-btn">

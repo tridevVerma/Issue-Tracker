@@ -6,10 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%=title%></title>
     <link rel="stylesheet" href="/css/layout_styles.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css"
-    />
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -17,7 +14,6 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
 
     <script
       src="https://code.jquery.com/jquery-3.7.0.min.js"
@@ -35,28 +31,6 @@
     <%- style %>
   </head>
   <body>
-    <%- include('partials/_navbar'); -%> <%- body %>
-    <script>
-      <% if(locals.flash.success && locals.flash.success.length > 0) { %>
-          new Noty({
-              theme: 'relax',
-              text: '<%= locals.flash.success%>',
-              type: 'success',
-              layout: 'topRight',
-              timeout: 1500
-          }).show();
-      <% } %>
-
-      <% if(locals.flash.error && locals.flash.error.length > 0) { %>
-          new Noty({
-              theme: 'relax',
-              text: '<%= locals.flash.error%>',
-              type: 'error',
-              layout: 'topRight',
-              timeout: 1500
-          }).show();
-      <% } %>
-    </script>
-    <%- script%>
+    <%- include('partials/_navbar'); -%> <%- body %> <%- script%>
   </body>
 </html>

@@ -19,6 +19,26 @@
     });
   };
 
+  // Get all issue's labels on a project to populate filter-by-label drop-down
+  const getAllIssueLabels = (projectID) => {
+    $.ajax({
+      type: "GET",
+      url: `/projects/previous-issues/${projectID}`,
+      success: function (data) {
+        $("#label-filter-container").empty();
+        let htmlString = "";
+        data.labels.forEach((label) => {
+          htmlString += `<option value="${label}">${label}</option>`;
+        });
+
+        $("#label-filter-container").append(htmlString);
+      },
+      error: function (err) {
+        console.log(err);
+      },
+    });
+  };
+
   (function () {
     // executes as soon as AllProjects Page loads
     const issueBtn = $(".raise-issue");
@@ -68,6 +88,7 @@
         </li>`;
 
           $("#details-issues").prepend(htmlString);
+          getAllIssueLabels($(issueBtn).attr("id"));
         },
         error: function (err) {
           console.log(err);

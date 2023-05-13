@@ -1,49 +1,72 @@
 const Project = require("../models/Project");
 const Issue = require("../models/Issue");
 
+// Create New Issue
 module.exports.create = async (req, res) => {
-  console.log(req.body);
-  const { title, author, desc, issues, projectID } = req.body;
+  const { title, author, desc, issues, projectID, previousIssues } = req.body;
+  try {
+    // find project
+    const project = await Project.findOne({ _id: projectID });
 
-  const project = await Project.findOne({ _id: projectID });
+    if (!project) {
+      return res.status(400).json({
+        success: false,
+        message: "Project doesn't exist!!",
+      });
+    }
 
-  if (!project) {
-    return res.status(400).json({
+    let labels = [];
+
+    if (typeof issues === "string") {
+      // Store issue labels in upper case only
+      labels.push(issues.toUpperCase());
+    } else {
+      labels = issues ? issues.map((iss) => iss.toUpperCase()) : [];
+    }
+
+    if (previousIssues) {
+      // add custom issue
+      labels.push(previousIssues.toUpperCase());
+    }
+
+    // create issue
+    const newIssue = await Issue.create({
+      project: projectID,
+      title,
+      author,
+      desc,
+      labels,
+    });
+
+    // push new issue inside project's issue array
+    project.issues.push(newIssue);
+    await project.save();
+
+    return res.status(200).json({
+      success: true,
+      newIssue,
+    });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({
       success: false,
-      message: "Project doesn't exist!!",
+      message: "Internal Server Error",
     });
   }
-
-  const newIssue = await Issue.create({
-    project: projectID,
-    title,
-    author,
-    desc,
-    labels:
-      typeof issues === "string"
-        ? issues.toUpperCase()
-        : issues.map((iss) => iss.toUpperCase()),
-  });
-
-  project.issues.push(newIssue);
-  await project.save();
-
-  return res.status(200).json({
-    success: true,
-    newIssue,
-  });
 };
 
+// Get all issue author's names
 module.exports.getIssueAuthorNames = async (req, res) => {
   try {
     const authors = await Issue.find({}).select("author -_id");
 
+    // Convert it to simple array of names
     const result = authors.reduce((ans, obj) => [...ans, obj.author], []);
 
     return res.status(200).json({
       success: true,
       data: {
-        authors: [...new Set(result)],
+        authors: [...new Set(result)], // remove duplicacy with Set
       },
     });
   } catch (err) {
