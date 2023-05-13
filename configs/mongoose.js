@@ -5,6 +5,7 @@ mongoose.set("strictQuery", true);
 
 main().catch((err) => console.log(err.message));
 
+// connect to mongodb via mongoose
 async function main() {
   await mongoose.connect(
     `mongodb://${env.mongodb_domain}:${env.mongodb_port}/${env.db_name}`,

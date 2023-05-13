@@ -69,8 +69,8 @@
 
   <div class="issues-container">
     <h1 id="show-filtered-heading">Issues</h1>
-    <ul>
-      <% project.issues.forEach(issue => { %>
+    <ul id="details-issues">
+      <% project.issues.reverse().forEach(issue => { %>
       <li>
         <h2><%=issue.title%></h2>
         <p>-By <%=issue.author%></p>

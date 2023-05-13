@@ -30,9 +30,7 @@ module.exports.create = async (req, res) => {
 
   return res.status(200).json({
     success: true,
-    data: {
-      newIssue,
-    },
+    newIssue,
   });
 };
 

@@ -1,4 +1,5 @@
 {
+  // Get all issue's labels on a project to populate previous-issues drop-down
   const getIssueLabels = (projectID) => {
     $.ajax({
       type: "GET",
@@ -19,22 +20,26 @@
   };
 
   (function () {
+    // executes as soon as AllProjects Page loads
     const issueBtn = $(".raise-issue");
     const modalContainer = $(".modal-container");
     const closeModal = $(".close-modal");
     const overlay = $(".overlay");
 
+    // Open Modal
     issueBtn.click(function (e) {
       modalContainer.removeClass("hide");
       getIssueLabels(this.id);
       overlay.show();
     });
 
+    // Close Modal
     closeModal.click(function () {
       modalContainer.addClass("hide");
       overlay.hide();
     });
 
+    // Create an Issue on a project
     const createIssueForm = $("#create-issue-form");
     $(createIssueForm).submit(function (e) {
       e.preventDefault();
@@ -45,12 +50,33 @@
         url: $(this).attr("action"),
         data: dataToSend,
         success: function (data) {
-          console.log(data);
+          const { newIssue } = data;
+
+          // Insert newly created Issue in the DOM
+          let htmlString = "";
+          htmlString += `<li>
+          <h2>${newIssue.title}</h2>
+          <p>-By ${newIssue.author}</p>
+          <p>${newIssue.desc}</p>
+          <div class="label-tags">
+            <ul>
+              ${newIssue.labels.map((label) => {
+                return `<li>${label}</li>`;
+              })}
+            </ul>
+          </div>
+        </li>`;
+
+          $("#details-issues").prepend(htmlString);
         },
         error: function (err) {
           console.log(err);
         },
       });
+
+      // close modal after form submission
+      modalContainer.addClass("hide");
+      overlay.hide();
     });
   })();
 }

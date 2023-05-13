@@ -36,6 +36,7 @@ const issueSchema = mongoose.Schema(
   }
 );
 
+// create indexing to search efficiently for title and description of issue
 issueSchema.index({ title: "text", desc: "text" });
 const Issue = mongoose.model("Issue", issueSchema);
 module.exports = Issue;
