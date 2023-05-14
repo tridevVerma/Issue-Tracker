@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon index.js",
-    "sass": "node-sass --watch assets/sass -o assets/css"
+    "sass": "node-sass --watch assets/sass -o assets/css",
+    "production": "set NODE_ENV=production&&node index.js"
   },
   "keywords": [
     "ISSUE-TRACKER",
@@ -22,5 +23,14 @@
     "mongodb": "^5.5.0",
     "mongoose": "^7.1.0",
     "node-sass": "^8.0.0"
+  },
+  "devDependencies": {
+    "del": "^7.0.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-rev": "^10.0.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-terser": "^2.1.0",
+    "sass": "^1.62.1"
   }
 }
