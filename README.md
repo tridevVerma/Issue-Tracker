@@ -16,6 +16,7 @@ Whole website is extreamy simple, intuitive and easy to use.
   - Filter by title or description of issues
 + Create New Issue button (accepts title, author, description, and labels for issue)
 + Custom labels are also acceptable for New Issue
++ Small indicator to show no of issues on that project.
 + Fully responsive website
 
 ## Technologies ##
