@@ -4,7 +4,8 @@ const path = require("path");
 
 module.exports = function (app) {
   // return relative filename to views acc. to environment mode (development, production)
-  // fileName --> actual filename, type --> type of file (css, js, image)
+  // fileName --> actual filename, type --> type of file (css, js)
+
   app.locals.assetPath = function (fileName, type) {
     if (env.name == "development") {
       return `/${type}/${fileName}`;
@@ -17,6 +18,7 @@ module.exports = function (app) {
         )
       )[fileName]
     }`;
+
     return newFileName;
   };
 };

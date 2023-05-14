@@ -1,4 +1,5 @@
 const env = require("./configs/environment");
+const path = require("path");
 const express = require("express");
 const app = express();
 const db = require("./configs/mongoose"); // mongoose connection
@@ -9,7 +10,7 @@ const port = env.server_port;
 // set up body parser and path of static files
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static(env.asset_path));
+app.use(express.static(path.join(__dirname, env.asset_path)));
 
 // set up express-ejs-layouts
 app.use(expressLayouts);
