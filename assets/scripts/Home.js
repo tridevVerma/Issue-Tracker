@@ -43,6 +43,9 @@
           $("#add-project-form").each(function () {
             this.reset();
           });
+
+          // Remove the text which shows no-content found
+          $(".no-projects").remove();
         },
         error: function (err) {
           console.log(err);

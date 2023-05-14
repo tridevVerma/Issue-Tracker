@@ -15,50 +15,6 @@
   </li>`;
   };
 
-  // Get all the authors to populate filter-by-author dropdown
-  const getAuthors = () => {
-    $.ajax({
-      type: "GET",
-      url: "/issues/authors",
-      success: function (data) {
-        const authorSelector = $("#author-selector");
-        $(authorSelector).empty();
-        $(authorSelector).append(
-          '<option value="" selected disabled>Filter By Author</option>'
-        );
-        let htmlString = "";
-
-        data.data.authors.forEach((author) => {
-          htmlString += `<option value="${author}">${author}</option>`;
-        });
-        $(authorSelector).append(htmlString);
-      },
-      error: function (err) {
-        console.log(err);
-      },
-    });
-  };
-
-  // Get all issue's labels on a project to populate filter-by-label drop-down
-  const getAllIssueLabels = (projectID) => {
-    $.ajax({
-      type: "GET",
-      url: `/projects/previous-issues/${projectID}`,
-      success: function (data) {
-        $("#label-filter-container").empty();
-        let htmlString = "";
-        data.labels.forEach((label) => {
-          htmlString += `<option value="${label}">${label}</option>`;
-        });
-
-        $("#label-filter-container").append(htmlString);
-      },
-      error: function (err) {
-        console.log(err);
-      },
-    });
-  };
-
   (function () {
     getAuthors();
 
@@ -66,6 +22,10 @@
     const urlString = window.location.href;
     const authorID = urlString.split("/")[4];
     getAllIssueLabels(authorID);
+
+    $("#get-all-issues-btn").click(function () {
+      window.location.reload();
+    });
 
     const labelForm = $("#filter-by-issue-labels");
     const authorForm = $("#filter-by-author");
@@ -89,6 +49,8 @@
               msg = "Nothing to show";
             }
             $("#show-filtered-heading").text(`Issues : ${msg}`);
+
+            // Empty the issues container and populate filtered issues in it
             const container = $(".issues-container > ul");
             $(container).empty();
 
@@ -98,6 +60,7 @@
               $(container).append(htmlString);
             });
 
+            // reset the filter form
             $(filterForm).each(function () {
               this.reset();
             });

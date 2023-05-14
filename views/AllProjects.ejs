@@ -7,13 +7,20 @@
 <main>
   <h1>All Projects</h1>
   <ul>
-    <%locals.allProjects.forEach((project) => {%>
+    <% if (locals.allProjects.length === 0) {%>
+    <h2 class="no-projects">No Projects Found...</h2>
+    <% } %> <%locals.allProjects.forEach((project) => {%>
 
     <li>
       <div class="project-heading">
         <h2><%=project.title%></h2>
         <span class="status-indicator"></span>
-        <p><%=project.issues.length%> Issues</p>
+        <p>
+          <span id="issues-count-<%=project._id%>"
+            ><%=project.issues.length%></span
+          >
+          Issues
+        </p>
       </div>
       <p>-By <%=project.author%></p>
       <p><%=project.desc%></p>

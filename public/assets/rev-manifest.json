@@ -1,14 +1,14 @@
 {
-  "AllProjects.js": "AllProjects-651b283c07.js",
-  "Home.js": "Home-7b5feb3282.js",
+  "AllProjects.js": "AllProjects-d5ab520bd9.js",
+  "Home.js": "Home-57894c4484.js",
   "MultiSelect.js": "MultiSelect-b0124be9c1.js",
-  "ProjectDetails.js": "ProjectDetails-11667efc33.js",
+  "ProjectDetails.js": "ProjectDetails-4a10476499.js",
   "addProjectModal.css": "addProjectModal-c201a51330.css",
-  "allProjects_styles.css": "allProjects_styles-3b08dc5df4.css",
+  "allProjects_styles.css": "allProjects_styles-2d5dea0cca.css",
   "createIssueModal.css": "createIssueModal-d49e84ed8b.css",
   "home_styles.css": "home_styles-5c483cf9c5.css",
-  "layout_styles.css": "layout_styles-067ae85f29.css",
+  "layout_styles.css": "layout_styles-f5fceca088.css",
   "multi-select.css": "multi-select-6e4fb13e22.css",
   "nav_styles.css": "nav_styles-826ba38d65.css",
-  "projectDetails_styles.css": "projectDetails_styles-2f47ba9fb3.css"
+  "projectDetails_styles.css": "projectDetails_styles-fb2ffedb21.css"
 }

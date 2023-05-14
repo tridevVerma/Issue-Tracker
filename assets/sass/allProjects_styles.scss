@@ -41,6 +41,7 @@ main {
     font-size: clamp(2rem, 3vw, 3.5rem);
   }
   > ul {
+    width: 100%;
     > li {
       position: relative;
       background-color: #fff;

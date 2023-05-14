@@ -69,16 +69,30 @@
 
   <h1>Project Details</h1>
   <div class="project-container">
-    <h1><%=project.title%></h1>
+    <div class="project-heading">
+      <h1><%=project.title%></h1>
+      <span class="status-indicator"></span>
+      <p>
+        <span id="issues-count-<%=project._id%>"
+          ><%=project.issues.length%></span
+        >
+        Issues
+      </p>
+    </div>
     <blockquote>-By <%=project.author%></blockquote>
     <p><%=project.desc%></p>
     <button class="raise-issue" id="<%=project._id%>">Raise Issue</button>
   </div>
 
   <div class="issues-container">
-    <h1 id="show-filtered-heading">Issues</h1>
+    <div class="filtered-issues-heading">
+      <h1 id="show-filtered-heading">Issues</h1>
+      <button id="get-all-issues-btn">Get All Issues</button>
+    </div>
     <ul id="details-issues">
-      <% project.issues.reverse().forEach(issue => { %>
+      <% if (project.issues.length === 0) {%>
+      <h2 class="no-issues">No Issues Found...</h2>
+      <% } %> <% project.issues.reverse().forEach(issue => { %>
       <li>
         <h2><%=issue.title%></h2>
         <p>-By <%=issue.author%></p>

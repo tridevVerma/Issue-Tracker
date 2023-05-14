@@ -9,7 +9,9 @@
   <div class="projects-container">
     <h1>Latest Projects</h1>
     <ul>
-      <%locals.allProjects.forEach((project) => {%>
+      <% if (locals.allProjects.length === 0) {%>
+      <h2 class="no-projects">No Projects Found...</h2>
+      <% } %> <%locals.allProjects.forEach((project) => {%>
       <a href="/projects/<%=project._id%>">
         <li>
           <div class="project-heading">
