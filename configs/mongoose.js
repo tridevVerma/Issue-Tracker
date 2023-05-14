@@ -7,11 +7,9 @@ main().catch((err) => console.log(err.message));
 
 // connect to mongodb via mongoose
 async function main() {
-  await mongoose.connect(
-    `mongodb://${env.mongodb_domain}:${env.mongodb_port}/${env.db_name}`,
-    {
-      useNewUrlParser: true,
-    }
-  );
+  await mongoose.connect(env.mongodb_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
   console.log("Successfully connected to db");
 }
