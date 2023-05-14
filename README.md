@@ -1,4 +1,4 @@
-# Issue-Tracker [Live Link](https://tridevverma.github.io/Alarm-clock/)
+# Issue-Tracker [Live Link](https://dark-frog-blazer.cyclic.app/)
 An Issue tracker website to create projects and address issues on that project.
 
 This is a web app for both mobile and desktop devices. It has clean and attractive UI combined with powerfull features. 
