@@ -1,4 +1,8 @@
-<link rel="stylesheet" href="/css/allProjects_styles.css" />
+<link
+  rel="stylesheet"
+  href="<%=locals.assetPath('allProjects_styles.css', 'css')%>"
+/>
+
 <div class="overlay"></div>
 <main>
   <h1>All Projects</h1>
@@ -25,4 +29,4 @@
 
 <%- include('./partials/_createIssue'); %>
 
-<script src="/scripts/AllProjects.js"></script>
+<script src="<%=locals.assetPath('AllProjects.js', 'scripts')%>"></script>

@@ -1,5 +1,12 @@
-<link rel="stylesheet" href="/css/multi-select.css" />
-<link rel="stylesheet" href="/css/projectDetails_styles.css" />
+<link
+  rel="stylesheet"
+  href="<%=locals.assetPath('multi-select.css', 'css')%>"
+/>
+<link
+  rel="stylesheet"
+  href="<%=locals.assetPath('projectDetails_styles.css', 'css')%>"
+/>
+
 <main>
   <div class="filter-container">
     <h1>Filter Box</h1>
@@ -91,6 +98,6 @@
 
 <%- include('./partials/_createIssue'); %>
 
-<script src="/scripts/MultiSelect.js"></script>
-<script src="/scripts/AllProjects.js"></script>
-<script src="/scripts/ProjectDetails.js"></script>
+<script src="<%=locals.assetPath('MultiSelect.js', 'scripts')%>"></script>
+<script src="<%=locals.assetPath('AllProjects.js', 'scripts')%>"></script>
+<script src="<%=locals.assetPath('ProjectDetails.js', 'scripts')%>"></script>

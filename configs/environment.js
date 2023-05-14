@@ -13,7 +13,7 @@ const production = {
   domain: "localhost",
   mongodb_URI: `mongodb+srv://${process.env.ISSUE_TRACKER_DB_USERNAME}:${process.env.ISSUE_TRACKER_DB_PASSWORD}@cluster0.bljbc4x.mongodb.net/issue_tracker_db?retryWrites=true&w=majority`,
   db_name: "issue_tracker_db",
-  server_port: 8000,
+  server_port: process.env.PORT,
   asset_path: "./assets",
   views_path: "./views",
 };
