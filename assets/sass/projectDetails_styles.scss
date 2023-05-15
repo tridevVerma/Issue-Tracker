@@ -182,6 +182,11 @@ main {
       justify-content: space-between;
       align-items: center;
 
+      @media screen and (max-width: 380px) {
+        flex-direction: column;
+        align-items: start;
+      }
+
       > h1 {
         font-size: 1.8rem;
         font-weight: 600;
@@ -201,6 +206,11 @@ main {
         &:hover {
           background-color: #fff;
           color: #33baf3;
+        }
+
+        @media screen and (max-width: 380px) {
+          width: 100%;
+          margin-bottom: 1rem;
         }
       }
     }

@@ -44,11 +44,11 @@
             // Give message after filtered applied
             let msg = "";
             if (data.filteredData?.length > 0) {
-              msg = "Filters Applied";
+              msg = "Filtered";
             } else {
               msg = "Nothing to show";
             }
-            $("#show-filtered-heading").text(`Issues : ${msg}`);
+            $("#show-filtered-heading").text(`${msg} Issues`);
 
             // Empty the issues container and populate filtered issues in it
             const container = $(".issues-container > ul");
