@@ -18,7 +18,8 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   font-family: "Poppins", sans-serif;
-  scroll-behavior: smooth; }
+  scroll-behavior: smooth;
+  position: relative; }
 
 i + span {
   margin-left: 0.8rem; }

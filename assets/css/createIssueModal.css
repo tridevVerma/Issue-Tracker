@@ -3,33 +3,29 @@
   bottom: 0%;
   left: 0%;
   width: 100%;
-  height: 65vh;
-  overflow: hidden;
-  transition: 0.4s height;
+  max-height: auto;
+  transition: 0.4s max-height;
+  background-color: #dcf0fa;
   z-index: 8; }
-  @media screen and (min-width: 768px) {
-    .modal-container {
-      height: 75vh; } }
-  @media screen and (min-width: 992px) {
-    .modal-container {
-      height: 45vh; } }
-  @media screen and (min-width: 1200px) {
-    .modal-container {
-      height: 55vh; } }
   .modal-container .customModal {
-    position: absolute;
-    bottom: 0%;
-    left: 0%;
-    background-color: #dcf0fa;
     height: 100%;
     width: 100%;
     z-index: 8;
     padding: 1rem 1.5rem; }
+    @media screen and (min-width: 992px) {
+      .modal-container .customModal {
+        width: 90%;
+        margin: 1rem auto; } }
+    @media screen and (min-width: 1200px) {
+      .modal-container .customModal {
+        width: 80%;
+        margin: 1rem auto; } }
     .modal-container .customModal > .modal-heading {
       display: grid;
       grid-template-columns: 1fr auto;
       justify-content: center;
-      align-items: center; }
+      align-items: center;
+      margin-bottom: 1rem; }
       .modal-container .customModal > .modal-heading > h1 {
         font-size: 1.5rem;
         font-weight: 600; }
@@ -47,18 +43,18 @@
           transform: rotate(180deg);
           opacity: 1; }
     .modal-container .customModal > form {
-      display: block;
-      margin: 1rem auto;
       width: 100%;
-      margin: 1.5rem auto; }
+      display: flex;
+      flex-direction: column; }
       @media screen and (min-width: 992px) {
         .modal-container .customModal > form {
+          margin: 1rem auto;
           display: grid;
           grid-template-columns: 1fr 1fr;
-          grid-gap: 1.5rem; } }
+          grid-gap: 1.5rem;
+          align-content: start; } }
       .modal-container .customModal > form > .info {
-        min-width: 0px;
-        max-width: 100%;
+        width: 100%;
         display: grid;
         grid-gap: 0.6rem;
         grid-template-columns: 1fr 1fr; }
@@ -76,8 +72,6 @@
             .modal-container .customModal > form > .info > textarea {
               margin-bottom: 0rem; } }
       .modal-container .customModal > form .issue-labels {
-        min-width: 0px;
-        max-width: 100%;
         width: 100%;
         display: grid;
         grid-template-rows: auto 1fr;
@@ -125,4 +119,4 @@
             margin-top: 0rem; } }
 
 .hide {
-  height: 0vh; }
+  max-height: 0; }

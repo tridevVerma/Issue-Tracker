@@ -5,38 +5,33 @@
   bottom: 0%;
   left: 0%;
   width: 100%;
-  height: 65vh;
-  overflow: hidden;
-  transition: 0.4s height;
+  max-height: auto;
+  transition: 0.4s max-height;
+  background-color: #dcf0fa;
   z-index: 8;
 
-  @media screen and (min-width: $medium) {
-    height: 75vh;
-  }
-
-  @media screen and (min-width: $large) {
-    height: 45vh;
-  }
-
-  @media screen and (min-width: $xlarge) {
-    height: 55vh;
-  }
-
   .customModal {
-    position: absolute;
-    bottom: 0%;
-    left: 0%;
-    background-color: #dcf0fa;
     height: 100%;
     width: 100%;
     z-index: 8;
     padding: 1rem 1.5rem;
+
+    @media screen and (min-width: $large) {
+      width: 90%;
+      margin: 1rem auto;
+    }
+
+    @media screen and (min-width: $xlarge) {
+      width: 80%;
+      margin: 1rem auto;
+    }
 
     > .modal-heading {
       display: grid;
       grid-template-columns: 1fr auto;
       justify-content: center;
       align-items: center;
+      margin-bottom: 1rem;
       > h1 {
         font-size: $h1-fs;
         font-weight: $h1-fw;
@@ -62,20 +57,20 @@
     }
 
     > form {
-      display: block;
-      margin: 1rem auto;
       width: 100%;
-      margin: 1.5rem auto;
+      display: flex;
+      flex-direction: column;
 
       @media screen and (min-width: $large) {
+        margin: 1rem auto;
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-gap: 1.5rem;
+        align-content: start;
       }
 
       > .info {
-        min-width: 0px;
-        max-width: 100%;
+        width: 100%;
         display: grid;
         grid-gap: 0.6rem;
         grid-template-columns: 1fr 1fr;
@@ -99,8 +94,6 @@
       }
 
       .issue-labels {
-        min-width: 0px;
-        max-width: 100%;
         width: 100%;
         display: grid;
         grid-template-rows: auto 1fr;
@@ -167,5 +160,5 @@
 }
 
 .hide {
-  height: 0vh;
+  max-height: 0;
 }
