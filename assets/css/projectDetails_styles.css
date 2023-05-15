@@ -1,8 +1,3 @@
-/*Font Awesome Fonts*/
-@font-face {
-  font-family: "FontAwesome";
-  src: url("font-awesome/fontawesome-webfont.ttf") format("truetype"); }
-
 main {
   width: 95%;
   margin: 8vh auto; }
