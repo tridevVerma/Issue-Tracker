@@ -8,7 +8,7 @@
 .multiselect {
   position: relative;
   width: 100%;
-  font-size: 1.2rem;
+  font-size: 1rem;
   transition: 0.2s;
   outline: none;
   background: #fff;
@@ -25,10 +25,10 @@
   align-items: center; }
 
 .multiselect > .title > .text {
-  padding: 10px 20px;
+  padding: 0.6rem 1rem;
   border: none;
   outline: none;
-  font-size: 1.2rem;
+  font-size: 1rem;
   cursor: pointer; }
 
 .multiselect > .title > .expand-icon,

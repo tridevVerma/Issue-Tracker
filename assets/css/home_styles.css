@@ -1,28 +1,22 @@
 main {
-  width: 70%;
+  width: 95%;
   margin: 15vh auto;
   display: flex;
   flex-direction: column;
   align-items: center; }
-  @media screen and (min-width: 0px) {
-    main {
-      width: 96%; } }
   @media screen and (min-width: 576px) {
     main {
       width: 90%; } }
   @media screen and (min-width: 768px) {
     main {
-      width: 85%; } }
-  @media screen and (min-width: 992px) {
-    main {
       width: 80%; } }
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 992px) {
     main {
       width: 70%; } }
   main > .add-new-project {
     position: relative;
-    width: clamp(150px, 15vw, 300px);
-    height: clamp(150px, 15vw, 300px);
+    width: clamp(8rem, 30vw, 10rem);
+    aspect-ratio: 1 / 1;
     border: none;
     background: #fff;
     opacity: 0.2;
@@ -31,14 +25,14 @@ main {
     align-items: center;
     transition: 0.2s transform; }
     main > .add-new-project > i {
-      font-size: 6vw; }
+      font-size: clamp(3rem, 6vw, 4rem); }
     main > .add-new-project::before {
       content: "";
       height: 100%;
       width: 100%;
       position: absolute;
-      top: -20px;
-      left: 20px;
+      top: -1rem;
+      left: 1rem;
       background: #fff;
       opacity: 0.6;
       z-index: 5;
@@ -50,14 +44,14 @@ main {
       cursor: pointer;
       z-index: -5; }
   main .add-new-project:active {
-    transform: translate(8px, -8px); }
+    transform: translate(0.6rem, -0.6rem); }
   main .add-new-project:active::before {
-    transform: translate(-8px, 8px); }
+    transform: translate(-0.6rem, 0.6rem); }
   main .projects-container {
     width: 100%;
     margin: 10vh auto; }
     main .projects-container > h1 {
-      font-size: clamp(2rem, 2.5vw, 3rem);
+      font-size: 2rem;
       text-align: center;
       margin-bottom: 4vh; }
     main .projects-container > ul {
@@ -69,41 +63,52 @@ main {
       @media screen and (min-width: 768px) {
         main .projects-container > ul {
           grid-template-columns: repeat(2, 1fr); } }
-      @media screen and (min-width: 992px) {
+      @media screen and (min-width: 1200px) {
         main .projects-container > ul {
           grid-template-columns: repeat(3, 1fr); } }
       main .projects-container > ul > a {
         color: #000; }
         main .projects-container > ul > a > li {
+          height: 180px;
           max-width: 100%;
           background-color: #fff;
           opacity: 0.8;
-          height: 250px;
           padding: 1rem;
           display: flex;
           flex-direction: column;
           justify-content: flex-start;
-          box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-          overflow: hidden; }
+          box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; }
+          @media screen and (min-width: 992px) {
+            main .projects-container > ul > a > li {
+              height: 220px; } }
           main .projects-container > ul > a > li > .project-heading {
             display: flex;
             align-items: center;
-            margin-bottom: 1rem; }
+            margin-bottom: 0.6rem; }
             main .projects-container > ul > a > li > .project-heading > h2 {
+              font-size: 1.2rem;
+              font-weight: 600;
               flex: 1 0 60%;
               text-transform: capitalize;
               white-space: nowrap;
               overflow: hidden;
               text-overflow: ellipsis; }
             main .projects-container > ul > a > li > .project-heading > .status-indicator {
-              width: 10px;
-              height: 10px;
+              width: 0.6rem;
+              height: 0.6rem;
               border-radius: 50%;
               background-color: green;
               margin-right: 0.8rem; }
+            main .projects-container > ul > a > li > .project-heading > p {
+              font-size: 0.9rem; }
           main .projects-container > ul > a > li > p {
-            margin-bottom: 1.5rem;
-            overflow: hidden; }
+            margin-bottom: 0.6rem;
+            font-size: 1rem;
+            display: -webkit-box;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical; }
 
 .overlay {
   display: none;

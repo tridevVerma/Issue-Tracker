@@ -1,23 +1,11 @@
-$xsmall: 0px;
-$small: 576px;
-$medium: 768px;
-$large: 992px;
-$xlarge: 1200px;
-$xxlarge: 1400px;
+@import "variables";
 
 main {
-  width: 70%;
-  padding-top: 6vh;
-  padding-bottom: 6vh;
-  margin-left: auto;
-  margin-right: auto;
+  width: 95%;
+  margin: 8vh auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  @media screen and (min-width: $xsmall) {
-    width: 96%;
-  }
 
   @media screen and (min-width: $small) {
     width: 90%;
@@ -38,7 +26,11 @@ main {
   > h1 {
     text-align: center;
     margin-bottom: 5vh;
-    font-size: clamp(2rem, 3vw, 3.5rem);
+    font-size: 1.8rem;
+
+    @media screen and (min-width: $large) {
+      font-size: 2.2rem;
+    }
   }
   > ul {
     width: 100%;
@@ -46,7 +38,6 @@ main {
       position: relative;
       background-color: #fff;
       opacity: 0.8;
-      height: 250px;
       padding: 1rem;
       display: flex;
       flex-direction: column;
@@ -60,6 +51,8 @@ main {
         align-items: center;
         margin-bottom: 1rem;
         > h2 {
+          font-size: $h2-fs;
+          font-weight: $h2-fw;
           flex: 1 0 60%;
           text-transform: capitalize;
           white-space: nowrap;
@@ -67,36 +60,35 @@ main {
           text-overflow: ellipsis;
         }
         > .status-indicator {
-          width: 10px;
-          height: 10px;
+          width: 0.6rem;
+          height: 0.6rem;
           border-radius: 50%;
-          background-color: green;
+          background-color: hsl(120, 50%, 40%);
           margin-right: 0.8rem;
+        }
+        > p {
+          font-size: 0.9rem;
         }
       }
 
       > p {
         margin-bottom: 1.5rem;
-        overflow: hidden;
       }
 
       > .action-btns {
-        position: absolute;
-        bottom: 1.2rem;
+        position: sticky;
+        bottom: 1rem;
         right: 1rem;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-gap: 1.5rem;
+        margin-top: 1rem;
+        display: flex;
         align-items: stretch;
+        justify-content: flex-end;
         > .raise-issue,
         a {
-          padding-top: 8px;
-          padding-bottom: 8px;
-          padding-left: 12px;
-          padding-right: 12px;
+          padding: 0.6rem 1rem;
           background-color: rgb(255, 54, 19);
           color: #fff;
-          font-size: clamp(1rem, 1.4vw, 1.2rem);
+          font-size: 1rem;
           letter-spacing: 1px;
           border: none;
           box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px,
@@ -109,6 +101,7 @@ main {
         }
         a {
           background-color: #50b8e7;
+          margin-right: 1rem;
         }
       }
     }

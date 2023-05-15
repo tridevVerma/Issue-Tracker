@@ -1,22 +1,28 @@
+@import "variables";
+
 * {
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
 }
 
-.dark {
-}
-
-.light {
+html {
+  font-size: $small-fs;
+  @media screen and (min-width: $medium) {
+    font-size: $medium-fs;
+  }
+  @media screen and (min-width: $xlarge) {
+    font-size: $large-fs;
+  }
 }
 
 body {
   min-height: 100vh;
-  font-size: 15px;
   background: linear-gradient(to right bottom, #4facfe, 60%, #00d3df);
   background-size: cover;
   background-repeat: no-repeat;
   font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
 }
 
 i + span {

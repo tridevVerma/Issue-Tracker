@@ -6,7 +6,8 @@ nav {
   padding: 2rem;
   padding-left: 4vw;
   padding-right: 4vw;
-  background-color: #030405; }
+  background-color: #030405;
+  height: 6rem; }
 
 nav ul {
   display: flex;
@@ -14,6 +15,6 @@ nav ul {
   align-items: center; }
 
 nav ul li a {
-  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  font-size: 1.4rem;
   text-transform: capitalize;
   color: #cde; }

@@ -1,39 +1,42 @@
-@import "breakpoints";
+@import "variables";
+
+/*Font Awesome Fonts*/
+@font-face {
+  font-family: "FontAwesome";
+  //in url add your folder path of FontAwsome Fonts
+  src: url("font-awesome/fontawesome-webfont.ttf") format("truetype");
+}
 
 main {
-  width: 65%;
-  margin: 10vh auto;
-
-  @media screen and (min-width: $xsmall) {
-    width: 96%;
-  }
+  width: 95%;
+  margin: 8vh auto;
 
   @media screen and (min-width: $small) {
-    width: 90%;
-  }
-
-  @media screen and (min-width: $medium) {
     width: 85%;
   }
 
-  @media screen and (min-width: $large) {
-    width: 80%;
+  @media screen and (min-width: $medium) {
+    width: 75%;
   }
 
-  @media screen and (min-width: $xlarge) {
-    width: 70%;
+  @media screen and (min-width: $large) {
+    width: 65%;
   }
 
   > h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
     margin-bottom: 1rem;
     letter-spacing: 2px;
     color: #fff;
   }
 
   .filter-container {
-    margin: 2rem auto;
+    margin: 1rem auto;
     margin-bottom: 5vh;
     > h1 {
+      font-size: 1.8rem;
+      font-weight: 600;
       margin-bottom: 0.6rem;
       letter-spacing: 2px;
       color: #fff;
@@ -42,38 +45,64 @@ main {
     #filter-by-issue-labels {
       display: grid;
       grid-template-columns: 1fr 100px;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
     }
 
     > form {
       display: grid;
       grid-template-columns: 1fr 100px;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
 
       > select,
       input {
-        font-size: 1.2rem;
-        padding: 10px 20px;
+        font-size: 1rem;
+        padding: 0.6rem 1rem;
         outline: none;
+        font-weight: normal;
+        background-color: hsl(0, 0%, 98%);
       }
 
       > button {
-        font-size: 1.2rem;
-        background-color: #0a8f0b;
+        width: 100%;
+        justify-self: center;
+        font-size: 1rem;
         color: #fff;
+        letter-spacing: 1px;
+        border: none;
+        background-color: hsl(120, 50%, 50%);
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+        &:hover {
+          background-color: hsl(120, 50%, 40%);
+        }
+
+        &:active {
+          box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        }
       }
     }
 
     > #search-title-desc {
+      > input {
+        border: none;
+        outline: none;
+        position: relative;
+
+        &::after {
+          content: "\25AE"; /* this is your text. You can also use UTF-8 character codes as I do here */
+          font-family: "Font Awesome 5 Free";
+          left: -5px;
+          position: absolute;
+          top: 0;
+        }
+      }
       > button {
-        display: flex;
-        justify-content: flex-start;
+        width: 100%;
+        justify-self: center;
         align-items: center;
 
         > i {
-          color: #000;
-          transform: translateX(-150%);
-          margin-right: -8px;
+          color: #fff;
           font-size: 0.9rem;
         }
       }
@@ -90,44 +119,51 @@ main {
     > .project-heading {
       display: flex;
       align-items: center;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
       > h1,
       h2 {
+        font-size: 1.2rem;
+        font-weight: 500;
         flex: 1 0 60%;
         text-transform: capitalize;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
       }
+
+      > h1 {
+        font-size: $h1-fs;
+        font-weight: $h1-fw;
+      }
       > .status-indicator {
-        width: 10px;
-        height: 10px;
+        width: 0.6rem;
+        height: 0.6rem;
         border-radius: 50%;
         background-color: green;
         margin-right: 0.8rem;
       }
+      > p {
+        font-size: 0.9rem;
+      }
     }
 
     > blockquote {
-      font-size: 1.2rem;
-      margin-bottom: 1.2rem;
+      font-size: 1.1rem;
+      margin-bottom: 1.1rem;
     }
 
     > p {
       line-height: 2rem;
-      font-size: 1.1rem;
+      font-size: 1rem;
     }
 
     > button {
       align-self: flex-end;
       margin-top: 1rem;
-      padding-top: 8px;
-      padding-bottom: 8px;
-      padding-left: 12px;
-      padding-right: 12px;
+      padding: 0.6rem 1rem;
       background-color: rgb(255, 110, 85);
       color: #fff;
-      font-size: clamp(1rem, 1.4vw, 1.2rem);
+      font-size: 1rem;
       letter-spacing: 1px;
       border: none;
       box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px,
@@ -154,15 +190,17 @@ main {
       align-items: center;
 
       > h1 {
+        font-size: 1.8rem;
+        font-weight: 600;
         margin-bottom: 1rem;
         letter-spacing: 2px;
         color: #fff;
       }
       > button {
         color: #fff;
-        padding: 10px 40px;
+        padding: 0.6rem 1.2rem;
         border: 2px solid #fff;
-        font-size: clamp(1.2rem, 1.2vw, 1.5rem);
+        font-size: 1.2rem;
         font-weight: 500;
         letter-spacing: 1px;
         background-color: transparent;
@@ -181,11 +219,15 @@ main {
         opacity: 0.8;
         margin-bottom: 2rem;
         > h2 {
-          font-weight: 600;
+          font-size: 1.2rem;
+          font-weight: 500;
+          text-transform: capitalize;
+          margin-bottom: 0.5rem;
         }
 
         > p:nth-child(2) {
           margin-bottom: 1rem;
+          font-size: 1rem;
         }
 
         > .label-tags {
@@ -197,14 +239,15 @@ main {
               margin-right: 1rem;
               margin-bottom: 1rem;
               width: fit-content;
-              padding: 1rem;
-              border: 3px solid #000;
+              padding: 0.5rem;
+              border: 2px solid hsl(0, 20%, 10%);
               border-radius: 30px;
-              text-transform: lowercase;
+              text-transform: capitalize;
               font-weight: 500;
+              font-size: 0.9rem;
 
-              @media screen and (max-width: $medium) {
-                padding: 0.5rem;
+              @media screen and (min-width: $large) {
+                padding: 0.8rem;
               }
             }
           }
